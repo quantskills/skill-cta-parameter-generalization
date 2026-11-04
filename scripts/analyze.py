@@ -38,6 +38,8 @@ def validate(outcomes: pd.DataFrame, features: pd.DataFrame, cfg: dict) -> tuple
     d["parameter"] = d.parameter.astype(str)
     for c in ("feature_start", "feature_end"):
         f[c] = pd.to_datetime(f[c], errors="raise")
+    if d.date.isna().any() or f[["feature_start", "feature_end"]].isna().any().any():
+        raise ValueError("收益或特征日期缺失，无法核实训练边界")
     start, end, test_end = map(pd.Timestamp, (cfg["train_start"], cfg["train_end"], cfg["test_end"]))
     if not start < end < test_end:
         raise ValueError("训练与测试时间顺序无效")
@@ -89,8 +91,8 @@ def analyze(outcomes: pd.DataFrame, features: pd.DataFrame, cfg: dict) -> dict:
     x = f.loc[symbols, cfg["feature_columns"]].to_numpy(float)
     mean, std = x.mean(0), x.std(0)
     std = np.where(std > 1e-12, std, 1)
-    k = int(cfg.get("clusters", 2))
-    if not 1 <= k <= len(symbols):
+    k = cfg.get("clusters", 2)
+    if isinstance(k, bool) or not isinstance(k, int) or not 1 <= k <= len(symbols):
         raise ValueError("聚类数不合法")
     centers, labels = kmeans2((x-mean)/std, k, minit="++", seed=int(cfg.get("seed", 42)))
     if len(set(labels)) != k:

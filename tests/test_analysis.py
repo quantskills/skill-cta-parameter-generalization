@@ -103,3 +103,37 @@ def test_parameter_ties_follow_frozen_order_not_lexical_order():
     rows = pd.DataFrame([{'symbol':'A', 'parameter':p, 'net_return':.01} for p in ('z','a')])
     assert choose(rows, ['a','z']) == 'a'
     assert choose(rows, ['z','a']) == 'z'
+
+
+@pytest.mark.parametrize("column", ["feature_start", "feature_end"])
+def test_missing_feature_date_cannot_bypass_training_boundary(column):
+    data, features, cfg = fixture()
+    features.loc[0, column] = None
+    with pytest.raises(ValueError, match="日期"):
+        analyze(data, features, cfg)
+
+
+@pytest.mark.parametrize("clusters", [True, 1.5, "2"])
+def test_cluster_count_must_be_explicit_integer(clusters):
+    data, features, cfg = fixture()
+    cfg["clusters"] = clusters
+    with pytest.raises(ValueError, match="聚类数"):
+        analyze(data, features, cfg)
+
+
+@pytest.mark.parametrize("column", ["gross_return", "fee_return", "slippage_return"])
+def test_nonfinite_market_inputs_are_rejected(column):
+    data, features, cfg = fixture()
+    data.loc[0, column] = np.inf
+    with pytest.raises(ValueError, match="有限"):
+        analyze(data, features, cfg)
+
+
+def test_input_row_order_does_not_change_frozen_decisions():
+    data, features, cfg = fixture()
+    before = analyze(data, features, cfg)
+    after = analyze(data.sample(frac=1, random_state=17), features.sample(frac=1, random_state=29), cfg)
+    assert before["parameter_maps"] == after["parameter_maps"]
+    assert before["cluster_model"] == after["cluster_model"]
+    for first, second in zip(before["metrics"], after["metrics"]):
+        assert first == pytest.approx(second)
