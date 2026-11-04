@@ -1,0 +1,2 @@
+# Preserve verified source bytes, including the pinned third-party file hash.
+* -text
