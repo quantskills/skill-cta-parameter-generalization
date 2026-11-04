@@ -1,0 +1,9 @@
+[project]
+name = "cta-parameter-generalization"
+version = "0.1.0.dev0"
+requires-python = ">=3.11"
+dependencies = ["numpy==2.2.6", "pandas==2.3.1", "scipy==1.16.1"]
+
+[tool.pytest.ini_options]
+pythonpath = ["scripts"]
+testpaths = ["tests"]

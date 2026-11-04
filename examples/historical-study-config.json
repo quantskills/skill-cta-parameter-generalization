@@ -1,0 +1,21 @@
+{
+  "train_start": "2016-01-01",
+  "train_end": "2020-12-31",
+  "test_end": "2025-12-31",
+  "train_symbols": ["CU", "AL", "RB", "RU", "M", "TA", "CF", "SR"],
+  "holdout_symbols": ["ZN", "I", "C", "Y"],
+  "parameters": ["10_60", "10_120", "10_240", "20_60", "20_120", "20_240", "40_60", "40_120", "40_240"],
+  "baseline_parameter": "20_120",
+  "feature_columns": ["annual_volatility", "autocorrelation_1", "trend_ratio_20"],
+  "clusters": 2,
+  "seed": 42,
+  "data_start": "2015-01-01",
+  "map_lag_sessions": 2,
+  "map_lag_sensitivity": [3, 5],
+  "fixed_notional_fraction": 0.25,
+  "fee_bps_one_way": 4.0,
+  "slippage_bps_one_way": 4.0,
+  "mechanism_repository": "https://github.com/quantskills/skill-global-macro-trend-strategy",
+  "mechanism_commit": "2eb638f8da966e51e5d0c026a7bc66a6f408d0c7",
+  "mechanism_file_sha256": "dd5fbaf234c57a08910ffecad80e19c001805328d78fde2b5274741a17946bf5"
+}
