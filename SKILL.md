@@ -33,3 +33,7 @@ python scripts/analyze.py --outcomes outcomes.csv --features features.csv --conf
 首次使用可运行 `python scripts/demo.py --output outputs/demo-01`，只生成合成数据，不访问账户。所有分析输出使用新目录，保留旧证据。
 
 平台复跑和最终证据要求见 [平台运行](references/platform-run.md)。已有一次官网实际数据回放、独立重算和补强代码的平台复验证据；结论为本次分组泛化无优势。历史发布时间、模拟成交与负责人最终确认仍未完成，不能标注为可直接实盘使用或全部验收通过。
+
+## Pandadata compatibility
+
+[Pandadata 1.0.6 compatibility](references/pandadata-compatibility.md) — exact SDK baseline, validation scope, and shared guidance for all supported agent runtimes.
