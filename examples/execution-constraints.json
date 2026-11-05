@@ -1,0 +1,9 @@
+{
+  "initial_capital": 250,
+  "fee_per_lot": 2,
+  "slippage": 0,
+  "rows": [
+    {"contract":"TEST01","decision_at":"2025-01-02T08:59:00+08:00","target_at":"2025-01-01T16:00:00+08:00","open_at":"2025-01-02T09:00:00+08:00","close_at":"2025-01-02T15:00:00+08:00","rule_available_at":null,"capacity_available_at":null,"target_lots":5.8,"open":100,"close":110,"multiplier":10,"margin_rate":0.1,"lower_limit":80,"upper_limit":120,"capacity_lots":100},
+    {"contract":"TEST01","decision_at":"2025-01-03T08:59:00+08:00","target_at":"2025-01-02T16:00:00+08:00","open_at":"2025-01-03T09:00:00+08:00","close_at":"2025-01-03T15:00:00+08:00","rule_available_at":null,"capacity_available_at":null,"target_lots":0,"open":80,"close":80,"multiplier":10,"margin_rate":0.1,"lower_limit":80,"upper_limit":120,"capacity_lots":100}
+  ]
+}
