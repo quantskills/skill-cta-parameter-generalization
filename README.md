@@ -1,5 +1,7 @@
 # CTA 参数共享与新市场泛化
 
+本轮增加[独立成交约束回放](references/execution-constraints.md)，用于检查手数、保证金、限价和未成交持仓；不改变原历史回测。最新检查和平台验证边界见[2026-11-05验收记录](references/validation-20261105.md)。
+
 首次使用先看[三步入门](references/getting-started.md)：运行 `python start.py --check` 检查环境，`python start.py` 打开中文菜单。准备好依赖后，运行 `python start.py --demo --output outputs/first-demo`，打开结果目录里的 `使用结果.md`。每次使用新目录；示例是合成数据，不证明真实效果。
 
 自己的数据统一放进一个文件夹，再运行 `python start.py --run --input-dir "我的输入" --output "outputs/我的结果"`。所需文件与准备步骤见入门说明。以下保留原始命令和历史研究记录，供进一步使用；[正式评分与模型审查](references/assessment.md)均为可选，不阻止普通使用。
