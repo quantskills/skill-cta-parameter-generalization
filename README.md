@@ -1,5 +1,9 @@
 # CTA 参数共享与新市场泛化
 
+首次使用先看[三步入门](references/getting-started.md)：运行 `python start.py --check` 检查环境，`python start.py` 打开中文菜单。准备好依赖后，运行 `python start.py --demo --output outputs/first-demo`，打开结果目录里的 `使用结果.md`。每次使用新目录；示例是合成数据，不证明真实效果。
+
+自己的数据统一放进一个文件夹，再运行 `python start.py --run --input-dir "我的输入" --output "outputs/我的结果"`。所需文件与准备步骤见入门说明。以下保留原始命令和历史研究记录，供进一步使用；[正式评分与模型审查](references/assessment.md)均为可选，不阻止普通使用。
+
 固定一套已经存在的 CTA 机制，检查同一组参数能否跨品种使用，以及训练期分组共享参数是否比逐品种选参更稳健。
 
 当前为研究版本。已完成一次官网 EVO 实际商品数据回放并通过独立重算，结果不支持本次分组共享方案改善新市场泛化。历史发布时间和模拟成交核验仍未完成，不能直接用于实盘。

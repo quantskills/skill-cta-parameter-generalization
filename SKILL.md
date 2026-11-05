@@ -13,6 +13,8 @@ metadata:
 
 ## 流程
 
+普通使用先读[入门说明](references/getting-started.md)，使用 `start.py --check`、`--demo --output 新目录` 或 `--run --input-dir 输入目录 --output 新目录`。无参数显示中文菜单。用户已有符合协议的数据时不要求先登录平台；以下平台流程仅在需要采集或复验证据时使用。新入口不联网、不安装、不登录、不修改平台状态。正式评分与模型审查只在需要时读[可选评估](references/assessment.md)。
+
 1. 从 EVO 正式入口执行研究并保存会话、运行编号、原始输入输出和环境记录。只下载结果不能证明策略版本相同，需一并保存策略和参数导出。
 2. 按 [输入协议](references/data-contract.md) 导出逐日参数收益与训练窗口特征。
    使用附带既有机制时，先读 [真实数据回放](references/replay.md)，按分批采集、固定执行时点和换月双腿费用生成导出。
