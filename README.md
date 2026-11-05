@@ -1,6 +1,6 @@
 # CTA 参数共享与新市场泛化
 
-本轮增加[独立成交约束回放](references/execution-constraints.md)，用于检查手数、保证金、限价和未成交持仓；不改变原历史回测。最新检查和平台验证边界见[2026-11-05验收记录](references/validation-20261105.md)。
+本轮增加[独立成交约束回放](references/execution-constraints.md)，用于检查手数、保证金、限价和未成交持仓；不改变原历史回测。新版已在 EVO 通过 74 项测试，中文演示和成交约束示例也已实跑。入口曾误拒绝平台依赖，修复过程和运行记录见[平台复验补记](references/evo-recovery-20261105.md)。这些检查不等于真实成交或盈利证明。
 
 首次使用先看[三步入门](references/getting-started.md)：运行 `python start.py --check` 检查环境，`python start.py` 打开中文菜单。准备好依赖后，运行 `python start.py --demo --output outputs/first-demo`，打开结果目录里的 `使用结果.md`。每次使用新目录；示例是合成数据，不证明真实效果。
 
