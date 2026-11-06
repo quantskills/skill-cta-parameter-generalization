@@ -1,16 +1,10 @@
 # CTA 参数泛化研究
 
-一组 CTA 参数在训练品种上表现不错，换到没参与选参的品种会怎样？这个 Skill 把固定参数、统一选参和分组共享放进同一个回放口径，分开比较熟悉品种与新市场的表现。
+在熟悉的期货品种上选出来的参数，换到没参与训练的品种后还合适吗？这个 Skill 在相同的策略和费用条件下比较固定参数、统一选参、分组共享和逐品种选参，让你判断更复杂的方案是否值得继续研究。
 
-## 可以看什么
+## 快速上手
 
-- 同一套策略下，各种选参方式在训练期和留出区间表现如何。
-- 费用上调后，原来的比较结论是否还站得住。
-- 单合约回放里，手数、保证金、限价和未成交持仓如何影响结果。可用[独立成交约束示例](references/execution-constraints.md)逐项检查这些假设。
-
-## 快速开始
-
-需要 Python 3.11 或更新版本。先在项目目录跑一份合成示例，无需账户或行情权限。
+在代码目录打开 PowerShell。需要 Python 3.11 或更新版本。首次安装依赖通常需要联网，示例运行不需要账号或密钥。
 
 ```powershell
 python -m venv .venv
@@ -18,18 +12,22 @@ python -m venv .venv
 .venv\Scripts\python start.py --demo --output outputs/first-demo
 ```
 
-打开 `outputs/first-demo/使用结果.md` 查看中文报告。macOS 和 Linux 请用 `.venv/bin/python` 替换示例中的 Python 路径。
+macOS 或 Linux 用 `.venv/bin/python` 替换命令中的 Python 路径。再次运行时换一个新的输出目录。
 
-已有逐日参数收益、训练期特征和冻结配置时，可按[三步入门](references/getting-started.md)组织文件，再运行自己的对照研究。
+## 例子 · 统一选参和分组共享怎么比？
+
+打开 `outputs/first-demo/使用结果.md`，找到「未见品种未来段」，把费用倍数相同的两行放在一起看。在合成示例里，原费用下两种方案的累计收益都是 4.60%，最大回撤都是 -0.16%。这两项指标没有给出换成分组共享的理由。用自己的数据时，先看样本覆盖率是否相近，再检查提高费用后判断会不会改变。需要筛选和留档时，用 `analysis/comparison.csv`。
+
+## 换成自己的数据
+
+准备逐日参数收益 `outcomes.csv`、训练期特征 `features.csv` 和固定研究配置 `config.json`。字段与日期边界见[三步入门](references/getting-started.md)。
 
 ```powershell
 .venv\Scripts\python start.py --run --input-dir "我的输入" --output "outputs/我的结果"
 ```
 
-逐方案结果可在报告和对比表中查看。每次使用新的输出目录。准备真实数据时，参见[数据协议](references/data-contract.md)和[真实数据回放说明](references/replay.md)。
+想看成交条件的影响，可用[单合约成交约束回放](references/execution-constraints.md)单独检查手数、保证金和限价。它是独立研究示例，不会改写原回测结果。
 
-## EVO 验证
+## 参考资料
 
-已在 EVO 上实际运行商品历史数据回放，并对结果做过独立重算。中文演示、成交约束示例和 74 项软件测试也在 EVO 运行通过。完整对照可查看[冻结研究配置](examples/historical-study-config.json)、[历史比较表](examples/historical-comparison.csv)和[平台验证记录](references/evo-recovery-20261105.md)。
-
-这些材料用于研究选参和回放条件，便于复查方案在新市场和不同费用下的表现。
+[数据协议](references/data-contract.md) · [实际商品数据回放](references/replay.md) · [历史对比表](examples/historical-comparison.csv) · [EVO 验证记录](references/evo-recovery-20261105.md)
